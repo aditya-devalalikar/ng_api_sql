@@ -3,18 +3,20 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MainDataComponent } from './main-data/main-data.component';
-import { IdDataComponent } from './id-data/id-data.component';
+import { UsersListComponent } from './users-list/users-list.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
+import { HttpClientModule } from  '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainDataComponent,
-    IdDataComponent
+    UsersListComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

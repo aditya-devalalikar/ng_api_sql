@@ -58,44 +58,47 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-          "configurations": {
-            "production": {
-              "browserTarget": "ng_api_sql:build:production"
+          "options": {
+            "browserTarget": "move-safe:build",
+            "proxyConfig": "proxy.conf.json"},
+            "configurations": {
+              "production": {
+                "browserTarget": "ng_api_sql:build:production"
+              },
+              "development": {
+                "browserTarget": "ng_api_sql:build:development"
+              }
             },
-            "development": {
-              "browserTarget": "ng_api_sql:build:development"
+            "defaultConfiguration": "development",
+          },
+          "extract-i18n": {
+            "builder": "@angular-devkit/build-angular:extract-i18n",
+            "options": {
+              "browserTarget": "ng_api_sql:build"
             }
           },
-          "defaultConfiguration": "development"
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "ng_api_sql:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
-            "tsConfig": "tsconfig.spec.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
-            "scripts": []
+          "test": {
+            "builder": "@angular-devkit/build-angular:karma",
+            "options": {
+              "polyfills": [
+                "zone.js",
+                "zone.js/testing"
+              ],
+              "tsConfig": "tsconfig.spec.json",
+              "assets": [
+                "src/favicon.ico",
+                "src/assets"
+              ],
+              "styles": [
+                "src/styles.css"
+              ],
+              "scripts": []
+            }
           }
         }
       }
+    },
+    "cli": {
+      "analytics": "208ff2d4-1f20-4a92-8669-9f0a241181d1"
     }
-  },
-  "cli": {
-    "analytics": "208ff2d4-1f20-4a92-8669-9f0a241181d1"
   }
-}
