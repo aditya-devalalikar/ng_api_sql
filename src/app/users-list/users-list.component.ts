@@ -9,6 +9,7 @@ import { User, UsersServiceService } from '../users-service.service';
 export class UsersListComponent {
 
   users: User[] = [];
+  text: string = '';
   showUsers: boolean = false;
   constructor(private userServiceService: UsersServiceService) { }
 
@@ -19,6 +20,11 @@ export class UsersListComponent {
         this.showUsers = true;
       }
     });
+  }
+
+  addNewUser()
+  {
+    this.userServiceService.addNewUserService().subscribe(text => this.text = text);
   }
 
 }

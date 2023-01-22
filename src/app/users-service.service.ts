@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -39,7 +39,7 @@ export class UsersServiceService {
     });
   }
 
-  
+
   getUserByID(id: number): Observable<User> {
     return new Observable<User>(observer => {
       let student = this.students.find(item => {
@@ -52,6 +52,12 @@ export class UsersServiceService {
         observer.next(student);
       }, 1000);
     });
+  }
+
+  text: string = '';
+
+  addNewUserService(): Observable<string> {
+    return of('Hello, New User Added!');
   }
 
   // getAllUsersAPI(): Observable<User[]> {
