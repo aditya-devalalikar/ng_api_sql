@@ -39,7 +39,6 @@ export class UsersServiceService {
     });
   }
 
-
   getUserByID(id: number): Observable<User> {
     return new Observable<User>(observer => {
       let student = this.students.find(item => {
@@ -55,9 +54,12 @@ export class UsersServiceService {
   }
 
   text: string = '';
-
   addNewUserService(): Observable<string> {
     return of('Hello, New User Added!');
+  }
+
+  receiveData(data: User){
+    this.students.push(data);
   }
 
   // getAllUsersAPI(): Observable<User[]> {

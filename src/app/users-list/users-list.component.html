@@ -18,8 +18,10 @@
             <h5>No records found!</h5>
         </div>
     </ng-template>
-    <div class="my-3">
+    <div class="my-3 mx-3">
         <button type="button" class="btn btn-primary" (click)="addNewUser()">Add New User</button>
-        <p>{{text}}</p>
+        <ng-template #componentOutlet></ng-template>
     </div>
 </div>
+
+<app-add-user *ngIf=""></app-add-user>

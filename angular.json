@@ -25,9 +25,15 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/popper.js/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -60,45 +66,47 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "move-safe:build",
-            "proxyConfig": "proxy.conf.json"},
-            "configurations": {
-              "production": {
-                "browserTarget": "ng_api_sql:build:production"
-              },
-              "development": {
-                "browserTarget": "ng_api_sql:build:development"
-              }
+            "proxyConfig": "proxy.conf.json"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ng_api_sql:build:production"
             },
-            "defaultConfiguration": "development",
-          },
-          "extract-i18n": {
-            "builder": "@angular-devkit/build-angular:extract-i18n",
-            "options": {
-              "browserTarget": "ng_api_sql:build"
+            "development": {
+              "browserTarget": "ng_api_sql:build:development"
             }
           },
-          "test": {
-            "builder": "@angular-devkit/build-angular:karma",
-            "options": {
-              "polyfills": [
-                "zone.js",
-                "zone.js/testing"
-              ],
-              "tsConfig": "tsconfig.spec.json",
-              "assets": [
-                "src/favicon.ico",
-                "src/assets"
-              ],
-              "styles": [
-                "src/styles.css"
-              ],
-              "scripts": []
-            }
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ng_api_sql:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "tsconfig.spec.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles.css"
+            ],
+            "scripts": []
           }
         }
       }
-    },
-    "cli": {
-      "analytics": "208ff2d4-1f20-4a92-8669-9f0a241181d1"
     }
+  },
+  "cli": {
+    "analytics": "208ff2d4-1f20-4a92-8669-9f0a241181d1"
   }
+}

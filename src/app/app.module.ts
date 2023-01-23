@@ -6,17 +6,26 @@ import { AppComponent } from './app.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { HttpClientModule } from  '@angular/common/http';
+import { AddUserComponent } from './add-user/add-user.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule   } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersListComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    FormsModule  
   ],
   providers: [],
   bootstrap: [AppComponent]

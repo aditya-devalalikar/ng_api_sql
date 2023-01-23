@@ -1,0 +1,19 @@
+<div>
+    <label for="id">ID: </label> <br />
+    <input [(ngModel)]="id" type="number" id="id" name="id" /> <br />
+    
+    <label for="name">Name: </label>
+    <input [(ngModel)]="name" type="text" id="name" name="name" /> <br />
+    
+    <label for="enrollmentNumber">Enrollment Number: </label> <br />
+    <input [(ngModel)]="enrollmentNumber" type="number" id="enrollmentNumber" name="enrollmentNumber" /> <br />
+    
+    <label for="College">College: </label>
+    <input [(ngModel)]="college" type="text" id="College" name="College" /> <br />
+    
+    <label for="University">University: </label>
+    <input [(ngModel)]="university" type="text" id="University" name="University" /> <br />
+
+    <button type="button" class="btn btn-primary" (click)="sendData()" >Submit</button>
+
+</div>
