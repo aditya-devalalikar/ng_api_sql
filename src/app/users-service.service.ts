@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
 @Injectable({
@@ -8,28 +8,34 @@ import { Observable, of } from 'rxjs';
 
 export class UsersServiceService {
   students: User[] = [{
-    id: 1,
-    name: 'Krunal',
-    enrollmentNumber: 110470116021,
-    College: 'VVP Engineering College',
-    University: 'GTU University'
+    Id: 1,
+    UserName: 'Krunal',
+    Email: 'Krunal@gmail.com',
+    Role: 'User',
+    Password: 'String',
+    CollegeName: 'VVP Engineering College',
+    UniversityName: 'GTU University'
   },
   {
-    id: 2,
-    name: 'Rushabh',
-    enrollmentNumber: 110470116023,
-    College: 'VVP Engineering College',
-    // University: 'GTU University'
+    Id: 2,
+    UserName: 'Rushabh',
+    Email: 'Rushabh@gmail.com',
+    Role: 'User',
+    Password: 'String',
+    CollegeName: 'VVP Engineering College',
+    UniversityName: 'GTU University'
   },
   {
-    id: 3,
-    name: 'Ankit',
-    enrollmentNumber: 110470116022,
-    College: 'VVP Engineering College',
-    University: 'GTU University'
+    Id: 3,
+    UserName: 'Ankit',
+    Email: 'Ankit@gmail.com',
+    Role: 'User',
+    Password: 'String',
+    CollegeName: 'VVP Engineering College',
+    UniversityName: 'GTU University'
   }];
 
-  constructor(private httpclient: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   getAllUsers(): Observable<User[]> {
     return new Observable<User[]>(observer => {
@@ -42,7 +48,7 @@ export class UsersServiceService {
   getUserByID(id: number): Observable<User> {
     return new Observable<User>(observer => {
       let student = this.students.find(item => {
-        if (item.id == id) {
+        if (item.Id == id) {
           return item;
         }
         return null;
@@ -58,26 +64,23 @@ export class UsersServiceService {
     return of('Hello, New User Added!');
   }
 
-  receiveData(data: User){
+  receiveData(data: User) {
     this.students.push(data);
   }
 
-  // getAllUsersAPI(): Observable<User[]> {
-  //   const headers = new HttpHeaders();
-  //   headers.set('Content-Type', 'application/json; charset=utf-8');
-  //   headers.set('Content-Type', 'application/json; charset=utf-8');
-  //   return this.httpclient.get<User[]>("localhost:5500/users", { headers });
-  // }
+  private apiUrl = 'http://localhost:3000/api';
 
-  // getUserByIDAPI(id: number): Observable<User> {
-  //   return this.httpclient.get<User>("localhost:5500/user/"+id);
-  // }
+  getAllDataAPI(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.apiUrl}/data`);
+  }
 }
 
 export interface User {
-  id: Number,
-  name: String,
-  enrollmentNumber: Number,
-  College?: String,
-  University?: String
+  Id: Number,
+  UserName: String,
+  Email: String,
+  Role: String,
+  Password: String,
+  CollegeName?: String,
+  UniversityName?: String
 }

@@ -1,18 +1,24 @@
 <div>
     <label for="id">ID: </label> <br />
-    <input [(ngModel)]="id" type="number" id="id" name="id" /> <br />
+    <input [(ngModel)]="Id" type="number" id="id" name="id" /> <br />
     
     <label for="name">Name: </label>
-    <input [(ngModel)]="name" type="text" id="name" name="name" /> <br />
+    <input [(ngModel)]="UserName" type="text" id="name" name="name" /> <br />
     
-    <label for="enrollmentNumber">Enrollment Number: </label> <br />
-    <input [(ngModel)]="enrollmentNumber" type="number" id="enrollmentNumber" name="enrollmentNumber" /> <br />
+    <label for="Email">Email: </label> <br />
+    <input [(ngModel)]="Email" type="number" id="enrollmentNumber" name="enrollmentNumber" /> <br />
     
+    <label for="Password">Password: </label> <br />
+    <input [(ngModel)]="Password" type="number" id="Password" name="Password" /> <br />
+
+    <label for="Role">Role: </label> <br />
+    <input [(ngModel)]="Role" type="number" id="Role" name="Role" /> <br />
+
     <label for="College">College: </label>
-    <input [(ngModel)]="college" type="text" id="College" name="College" /> <br />
+    <input [(ngModel)]="CollegeName" type="text" id="College" name="College" /> <br />
     
     <label for="University">University: </label>
-    <input [(ngModel)]="university" type="text" id="University" name="University" /> <br />
+    <input [(ngModel)]="UniversityName" type="text" id="University" name="University" /> <br />
 
     <button type="button" class="btn btn-primary" (click)="sendData()" >Submit</button>
 

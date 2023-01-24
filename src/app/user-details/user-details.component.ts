@@ -9,26 +9,28 @@ import { User, UsersServiceService } from '../users-service.service';
 })
 
 export class UserDetailsComponent {
-  id: number = 0;
+  Id: number = 0;
   user: User = {
-    id: -1,
-    College: '',
-    enrollmentNumber: 0,
-    name: '',
-    University: '',
+    Id: -1,
+    CollegeName: '',
+    Email: '',
+    Role:'',
+    Password:'',
+    UserName: '',
+    UniversityName: '',
   };
   constructor(private route: ActivatedRoute, private usersServiceService: UsersServiceService) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id != null) {
-      this.id = parseInt(id);
-      this.usersServiceService.getUserByID(this.id).subscribe((data: User) => {
+      this.Id = parseInt(id);
+      this.usersServiceService.getUserByID(this.Id).subscribe((data: User) => {
         if (data != null) {
           this.user = data;
         }
         else{
-          this.user.id= 0;
+          this.user.Id= 0;
         }
       });
     }

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -10,6 +10,9 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule   } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
 @NgModule({
@@ -25,7 +28,9 @@ import { FormsModule   } from '@angular/forms';
     HttpClientModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    FormsModule  
+    FormsModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    isDevMode() ? StoreDevtoolsModule.instrument() : []  
   ],
   providers: [],
   bootstrap: [AppComponent]

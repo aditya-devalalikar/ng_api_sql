@@ -4,11 +4,13 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">{{ i }}</h5>
-                    <h5 class="card-title">{{ user.name }}</h5>
-                    <h6 class="card-subtitle">{{ user.enrollmentNumber }}</h6>
-                    <p class="card-text">{{ user.College }}</p>
-                    <p class="card-text">{{ user.University }}</p>
-                    <a class="btn btn-primary" href="/user/{{user.id}}">Details</a>
+                    <h5 class="card-title">{{ user.UserName }}</h5>
+                    <h6 class="card-subtitle">{{ user.Email }}</h6>
+                    <h6 class="card-subtitle">{{ user.Password }}</h6>
+                    <h6 class="card-subtitle">{{ user.Role }}</h6>
+                    <p class="card-text">{{ user.CollegeName }}</p>
+                    <p class="card-text">{{ user.UniversityName }}</p>
+                    <a class="btn btn-primary" href="/user/{{user.Id}}">Details</a>
                 </div>
             </div>
         </div>

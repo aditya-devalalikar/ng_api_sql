@@ -20,7 +20,7 @@ export class UsersListComponent {
               private componentFactoryResolver: ComponentFactoryResolver) { }
 
   ngOnInit() {
-    this.userServiceService.getAllUsers().subscribe((data: User[]) => {
+    this.userServiceService.getAllDataAPI().subscribe((data: User[]) => {
       this.users = data;
       if (data.length > 0) {
         this.showUsers = true;
@@ -29,10 +29,6 @@ export class UsersListComponent {
   }
 
   addNewUser() {
-    // this.userServiceService.addNewUserService().subscribe(text => this.text = text);
-    // const dialogRef = this.dialog.open(AddUserComponent);
-    // this.router.navigate(['add-user']);
-
     const factory = this.componentFactoryResolver.resolveComponentFactory(AddUserComponent);
     const componentRef = factory.create(this.viewContainerRef.parentInjector);
     this.viewContainerRef.insert(componentRef.hostView);

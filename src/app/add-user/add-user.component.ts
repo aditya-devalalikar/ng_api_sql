@@ -9,11 +9,13 @@ import { UsersServiceService } from '../users-service.service';
 })
 export class AddUserComponent {
 
-  id: number = 0;
-  name: string = '';
-  enrollmentNumber: number = 0;
-  college: string = '';
-  university: string = '';
+  Id: number = 0;
+  UserName: string = '';
+  Email: string = '';
+  Password: string = '';
+  Role: string = '';
+  CollegeName: string = '';
+  UniversityName: string = '';
 
   // usersForm = new Form Control
 
@@ -21,24 +23,28 @@ export class AddUserComponent {
 
   sendData() {
     const data: User = {
-      id: this.id,
-      name: this.name,
-      enrollmentNumber: this.enrollmentNumber,
-      college: this.college,
-      university: this.university
+      Id: this.Id,
+      UserName: this.UserName,
+      Email: this.Email,
+      Password: this.Password,
+      Role: this.Role,
+      CollegeName: this.CollegeName,
+      UniversityName: this.UniversityName
     };
-    
+
     this.userServiceService.receiveData(data);
 
     interface User {
-      id: number,
-      name: string,
-      enrollmentNumber: number,
-      college: string,
-      university: string
+      Id: number,
+      UserName: string,
+      Email: string,
+      Role: string,
+      Password: string,
+      CollegeName: string,
+      UniversityName: string
     }
   }
-  
+
 }
 
 
