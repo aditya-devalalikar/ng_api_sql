@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserViewComponent } from './user-view.component';
+import { CounterComponent } from './counter.component';
 
-describe('UserViewComponent', () => {
-  let component: UserViewComponent;
-  let fixture: ComponentFixture<UserViewComponent>;
+describe('CounterComponent', () => {
+  let component: CounterComponent;
+  let fixture: ComponentFixture<CounterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserViewComponent ]
+      declarations: [ CounterComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(UserViewComponent);
+    fixture = TestBed.createComponent(CounterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,4 +1,5 @@
-import { NgModule, isDevMode } from '@angular/core';
+import { NgModule } from '@angular/core';
+import { isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -9,10 +10,11 @@ import { HttpClientModule } from  '@angular/common/http';
 import { AddUserComponent } from './add-user/add-user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
-import { FormsModule   } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { countReducer, FEATURE_KEY } from './store/counter.reducer';
+import { CounterComponent } from './counter/counter.component';
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     AppComponent,
     UsersListComponent,
     UserDetailsComponent,
-    AddUserComponent
+    AddUserComponent,
+    CounterComponent
   ],
   imports: [
     BrowserModule,
@@ -29,8 +32,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     BrowserAnimationsModule,
     MatDialogModule,
     FormsModule,
-    StoreModule.forRoot(reducers, { metaReducers }),
-    isDevMode() ? StoreDevtoolsModule.instrument() : []  
+    StoreModule.forRoot({}),
+    StoreModule.forFeature(FEATURE_KEY, countReducer),
+    // isDevMode() ? StoreDevtoolsModule.instrument() : []  
   ],
   providers: [],
   bootstrap: [AppComponent]
