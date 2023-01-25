@@ -23,7 +23,7 @@ import { CounterComponent } from './counter/counter.component';
     UsersListComponent,
     UserDetailsComponent,
     AddUserComponent,
-    CounterComponent
+    CounterComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +34,10 @@ import { CounterComponent } from './counter/counter.component';
     FormsModule,
     StoreModule.forRoot({}),
     StoreModule.forFeature(FEATURE_KEY, countReducer),
-    // isDevMode() ? StoreDevtoolsModule.instrument() : []  
+    StoreDevtoolsModule.instrument({
+      maxAge: 15, // Retains last 25 states
+      // logOnly: environment.production, // Restrict extension to log-only mode
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
