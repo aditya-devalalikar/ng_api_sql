@@ -30,7 +30,7 @@ export class CounterComponent {
 
   decrement() {
     this.countFacade.decrement();
-  }
+  } 
 
 }
 

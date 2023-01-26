@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UsersListComponent } from './users-list/users-list.component';
@@ -16,6 +17,14 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { countReducer, FEATURE_KEY } from './store/counter.reducer';
 import { CounterComponent } from './counter/counter.component';
 
+
+const routes: Routes = [
+  {
+    path: 'counter',
+    component: CounterComponent,
+    canActivate: [],
+  },
+];
 
 @NgModule({
   declarations: [
@@ -32,6 +41,7 @@ import { CounterComponent } from './counter/counter.component';
     BrowserAnimationsModule,
     MatDialogModule,
     FormsModule,
+    RouterModule.forChild(routes),
     StoreModule.forRoot({}),
     StoreModule.forFeature(FEATURE_KEY, countReducer),
     StoreDevtoolsModule.instrument({
