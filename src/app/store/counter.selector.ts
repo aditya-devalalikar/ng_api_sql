@@ -7,3 +7,8 @@ export const selectCounterState = createFeatureSelector<CounterState>(FEATURE_KE
 export const counterSelector = createSelector(selectCounterState, state => {
     return state.count
 });
+
+
+export const userListSelector = createSelector(selectCounterState, state => {
+    return state.userList
+});

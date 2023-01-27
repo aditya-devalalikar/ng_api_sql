@@ -6,4 +6,4 @@ export const decrement = createAction('[Counter] Decrement');
 
 export const getAllData = createAction('[User] getAllData');
 export const getAllDataSuccess = createAction('[User] getAllDataSuccess', props<{ userList: User[] }>());
-export const getAllDataFailed = createAction('[User] getAllDataFailed');
+export const getAllDataFailed = createAction('[User] getAllDataFailed', props<{ error:string }>());

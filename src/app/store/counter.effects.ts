@@ -1,49 +1,25 @@
 import { Injectable } from '@angular/core';
-import { createEffect } from '@ngrx/effects';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { EMPTY } from 'rxjs';
+import * as CounterActions from './counter.action';
+import { map, mergeMap, catchError } from 'rxjs/operators';
 import { User, UsersServiceService } from '../users-service.service';
-import * as CounterActions from '../store/counter.action';
-import { Actions, ofType } from '@ngrx/effects/src';
-import { map } from 'rxjs/operators';
-import { of } from 'rxjs';
-import { catchError, exhaustMap, finalize, map, tap } from 'rxjs/operators';
 
 
 @Injectable()
 export class CounterEffects {
 
-    constructor(private userServiceService: UsersServiceService,
-        private actions$: Actions) { }
-
-    users: User[] = [];
-    text: string = '';
-    showUsers: boolean = false;
-
-
-    getUserData$ = createEffect(
-        () => this.actions$.pipe(
-            ofType(CounterActions.getAllData),
-            map(() =>
-                this.userServiceService.getAllDataAPI().pipe(
-                    map((userList: User[]) =>
-                        CounterActions.getAllDataSuccess({ userList })),
-                    catchError(() => of(CounterActions.getAllDataFailed()))
-                )
-            )
+    loadUserList$ = createEffect(() => this.actions$.pipe(
+        ofType(CounterActions.getAllData),
+        mergeMap(() => this.userServiceService.getAllUsers()
+          .pipe(
+            map((userList: User[]) => (CounterActions.getAllDataSuccess({ userList }))),
+            catchError(() => EMPTY )
+          ))
         )
-    );
+      );
 
-    // getUserData$ = createEffect(() => {
-    //     return this.actions$.pipe(
-    //         ofType(CounterActions.getAllData),
-    //         map(() => {
-    //             return this.userServiceService.getAllDataAPI().pipe(
-    //                 map((userList: User[]) => {
-    //                     if (userList.length > 0) {
-    //                         return CounterActions.getAllDataSuccess({ userList })
-    //                     }
-    //                 }),
-    //                 catchError(() => of(CounterActions.getAllDataFailed()))
-    //       })
-    //     );
-    // });
+    constructor(private userServiceService: UsersServiceService,
+    private actions$: Actions) { }
+
 }

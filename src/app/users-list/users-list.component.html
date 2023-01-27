@@ -1,8 +1,8 @@
 <app-counter></app-counter>
 
 <div class="container">
-    <div class="row" style="margin-top: 30px" *ngIf="showUsers; else elseBlock">
-        <div class="col-md-3 col-xs-6" *ngFor="let user of users; let i=index">
+    <div class="row" style="margin-top: 30px" *ngIf="(userList$ | async) != null">
+        <div class="col-md-3 col-xs-6" *ngFor="let user of userList$ | async; let i=index">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">{{ i }}</h5>

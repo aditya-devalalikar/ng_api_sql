@@ -16,6 +16,8 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { countReducer, FEATURE_KEY } from './store/counter.reducer';
 import { CounterComponent } from './counter/counter.component';
+import { CounterEffects } from './store/counter.effects';
+import { EffectsModule } from '@ngrx/effects';
 
 
 const routes: Routes = [
@@ -43,6 +45,7 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forChild(routes),
     StoreModule.forRoot({}),
+    EffectsModule.forRoot([CounterEffects]),
     StoreModule.forFeature(FEATURE_KEY, countReducer),
     StoreDevtoolsModule.instrument({
       maxAge: 15, // Retains last 25 states
