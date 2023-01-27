@@ -12,3 +12,7 @@ export const counterSelector = createSelector(selectCounterState, state => {
 export const userListSelector = createSelector(selectCounterState, state => {
     return state.userList
 });
+
+export const singleUserDetailsSelector = createSelector(selectCounterState, state => {
+    return state.singleUser
+});

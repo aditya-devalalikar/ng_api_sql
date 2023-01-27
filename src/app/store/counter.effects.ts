@@ -18,6 +18,16 @@ export class CounterEffects {
           ))
         )
       );
+      
+    loadUserById$ = createEffect(() => this.actions$.pipe(
+        ofType(CounterActions.getUserById),
+        mergeMap((action) => this.userServiceService.getUserByID(action.id)
+          .pipe(
+            map((user: User) => (CounterActions.getUserByIdSuccess({ user }))),
+            catchError(() => EMPTY )
+          ))
+        )
+      );
 
     constructor(private userServiceService: UsersServiceService,
     private actions$: Actions) { }
