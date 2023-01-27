@@ -3,7 +3,7 @@ import { User, UsersServiceService } from '../users-service.service';
 import { AddUserComponent } from '../add-user/add-user.component';
 import { Router } from '@angular/router';
 import { ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
-
+import { CounterFacade } from '../store/counter.facade';
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',
@@ -17,15 +17,11 @@ export class UsersListComponent {
   constructor(private userServiceService: UsersServiceService, 
               private router: Router,
               private viewContainerRef: ViewContainerRef,
-              private componentFactoryResolver: ComponentFactoryResolver) { }
+              private componentFactoryResolver: ComponentFactoryResolver,
+              private countFacade : CounterFacade) { }
 
   ngOnInit() {
-    this.userServiceService.getAllDataAPI().subscribe((data: User[]) => {
-      this.users = data;
-      if (data.length > 0) {
-        this.showUsers = true;
-      }
-    });
+    this.countFacade.getAllData();
   }
 
   addNewUser() {

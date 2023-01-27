@@ -7,6 +7,7 @@ import * as CounterSelector from '../store/counter.selector';
 @Injectable({
   providedIn: 'root',
 })
+
 export class CounterFacade {
   counter$ = this.store.select(CounterSelector.counterSelector);
 
@@ -16,8 +17,14 @@ export class CounterFacade {
     this.store.dispatch(CounterActions.decrement());
   }
 
+  getAllData() {
+    this.store.dispatch(CounterActions.getAllData());
+  }
+
   increment() {
     this.store.dispatch(CounterActions.increment());
   }
+
+ 
 
 }
