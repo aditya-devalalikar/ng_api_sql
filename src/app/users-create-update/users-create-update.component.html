@@ -1,0 +1,65 @@
+<div class="container">
+    <form [formGroup]="userForm">
+        <!-- <p>
+            <mat-form-field appearance="outline" class="">
+                <mat-label for="id">Id </mat-label>
+            </mat-form-field>
+
+        </p> -->
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label for="userName">User Name</mat-label>
+                <input matInput placeholder="userName" id="userName" type="text" formControlName="userName" required>
+            </mat-form-field>
+
+        </p>
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label for="email">Email</mat-label>
+                <input matInput placeholder="Email" id="email" type="text" formControlName="email" required>
+            </mat-form-field>
+
+        </p>
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label for="role">Role</mat-label>
+                <input matInput placeholder="Role" id="role" type="text" formControlName="role" required>
+            </mat-form-field>
+
+        </p>
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label for="password">Password</mat-label>
+                <input matInput placeholder="Password" id="password" type="password" formControlName="password" required>
+            </mat-form-field>
+
+        </p>
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label for="confirmPassword">Confirm Password</mat-label>
+                <input matInput placeholder="Confirm Password" id="confirmPassword" type="password"
+                    formControlName="confirmPassword" required>
+            </mat-form-field>
+
+        </p>
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label for="collegeName">College Name</mat-label>
+                <input matInput placeholder="College Name" id="collegeName" type="collegeName"
+                    formControlName="collegeName">
+            </mat-form-field>
+
+        </p>
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label for="universityName">University Name</mat-label>
+                <input matInput placeholder="University Name" id="universityName" type="universityName"
+                    formControlName="universityName">
+            </mat-form-field>
+
+        </p>
+        <p>
+            <button mat-raised-button color="primary" (click)="submitUserData()">{{ buttonTittle }}</button>
+        </p>
+    </form>
+</div>
