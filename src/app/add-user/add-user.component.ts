@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
+import { CounterFacade } from '../store/counter.facade';
 import { UsersServiceService } from '../users-service.service';
-
 
 @Component({
   selector: 'app-add-user',
@@ -19,7 +19,8 @@ export class AddUserComponent {
 
   // usersForm = new Form Control
 
-  constructor(private userServiceService: UsersServiceService) { }
+  constructor(private userServiceService: UsersServiceService,
+    private countFacade: CounterFacade) { }
 
   sendData() {
     const data: User = {
@@ -32,7 +33,9 @@ export class AddUserComponent {
       UniversityName: this.UniversityName
     };
 
-    this.userServiceService.receiveData(data);
+    this.countFacade.getUserById(data.Id);
+
+    // this.userServiceService.receiveData(data);
 
     interface User {
       Id: number,

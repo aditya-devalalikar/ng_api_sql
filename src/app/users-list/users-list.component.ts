@@ -16,8 +16,8 @@ export class UsersListComponent {
   text: string = '';
   showUsers: boolean = false;
 
-  
   userList$ : Observable<User[]>;
+
   constructor(private userServiceService: UsersServiceService, 
               private router: Router,
               private viewContainerRef: ViewContainerRef,
@@ -35,5 +35,4 @@ export class UsersListComponent {
     const componentRef = factory.create(this.viewContainerRef.parentInjector);
     this.viewContainerRef.insert(componentRef.hostView);
   }
-
 }

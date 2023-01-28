@@ -11,7 +11,7 @@ import * as CounterSelector from '../store/counter.selector';
 export class CounterFacade {
   counter$ = this.store.select(CounterSelector.counterSelector);
   userList$ = this.store.select(CounterSelector.userListSelector);
-  singleUserSelector$ = this.store.select(CounterSelector.singleUserDetailsSelector);
+  singleUser$ = this.store.select(CounterSelector.singleUserDetailsSelector);
 
   constructor(private store: Store) {}
 

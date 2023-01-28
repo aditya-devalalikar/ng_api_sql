@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CounterFacade } from '../store/counter.facade';
 import { User, UsersServiceService } from '../users-service.service';
-
 @Component({
   selector: 'app-user-details',
   templateUrl: './user-details.component.html',
@@ -14,7 +13,7 @@ export class UserDetailsComponent {
   Id: number = 0;
   user: User = {
     Id: -1,
-    CollegeName: '',
+    CollegeName: 'asd',
     Email: '',
     Role:'',
     Password:'',
@@ -27,7 +26,7 @@ export class UserDetailsComponent {
   constructor(private route: ActivatedRoute, 
     private usersServiceService: UsersServiceService,
     private countFacade : CounterFacade) {
-      this.singleUser$ = this.countFacade.singleUserSelector$
+      this.singleUser$ = this.countFacade.singleUser$
     }
 
   ngOnInit(): void {
@@ -43,8 +42,6 @@ export class UserDetailsComponent {
       //   }
       // });
     this.countFacade.getUserById(parseInt(id));
-
-
     }
   }
 }

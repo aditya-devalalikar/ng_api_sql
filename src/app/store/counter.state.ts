@@ -1,19 +1,21 @@
 import { User } from "../users-service.service";
 
 export interface CounterState {
-    count: number;
-    singleUser: User;
-    userList: User[];
-  }
-  
+  count: number;
+  singleUser: User;
+  userList: User[];
+}
+
 export const initialState: CounterState = {
   count: 0,
   singleUser: {
-    Email:"",
     Id: 0,
-    Password: "",
+    UserName: "",
+    Email: "",
     Role: "",
-    UserName: ""
+    Password: "",
+    CollegeName: "",
+    UniversityName: ""
   },
   userList: []
 };
