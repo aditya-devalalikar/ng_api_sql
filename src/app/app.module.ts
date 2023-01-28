@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule  } from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
 import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { HttpClientModule } from  '@angular/common/http';
-import { AddUserComponent } from './add-user/add-user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
@@ -18,7 +19,8 @@ import { countReducer, FEATURE_KEY } from './store/counter.reducer';
 import { CounterComponent } from './counter/counter.component';
 import { CounterEffects } from './store/counter.effects';
 import { EffectsModule } from '@ngrx/effects';
-
+import { UsersCreateUpdateComponent } from './users-create-update/users-create-update.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -33,16 +35,20 @@ const routes: Routes = [
     AppComponent,
     UsersListComponent,
     UserDetailsComponent,
-    AddUserComponent,
     CounterComponent,
+    UsersCreateUpdateComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatDialogModule,
+    MatDialogModule, 
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
     FormsModule,
+    MatButtonModule,
     RouterModule.forChild(routes),
     StoreModule.forRoot({}),
     EffectsModule.forRoot([CounterEffects]),

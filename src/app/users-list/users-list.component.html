@@ -1,7 +1,7 @@
-<app-counter></app-counter>
+
 
 <div class="container">
-    <div class="row" style="margin-top: 30px" *ngIf="(userList$ | async) != null">
+    <div class="row" style="margin: 30px" *ngIf="(userList$ | async) != null">
         <div class="col-md-3 col-xs-6" *ngFor="let user of userList$ | async; let i=index">
             <div class="card">
                 <div class="card-body">
@@ -12,7 +12,8 @@
                     <h6 class="card-subtitle">{{ user.Role }}</h6>
                     <p class="card-text">{{ user.CollegeName }}</p>
                     <p class="card-text">{{ user.UniversityName }}</p>
-                    <a class="btn btn-primary" href="/user/{{user.Id}}">Details</a>
+                    <a class="btn btn-primary m-1"  href="/user/{{user.Id}}">Details</a>
+                    <a class="btn btn-primary " (click)="updateUser(user.Id)">update</a>
                 </div>
             </div>
         </div>
@@ -25,6 +26,10 @@
     <div class="my-3 mx-3">
         <button type="button" class="btn btn-primary" (click)="addNewUser()">Add New User</button>
         <ng-template #componentOutlet></ng-template>
+    </div>
+
+    <div *ngIf="showUserForm">
+        <users-create-update></users-create-update>
     </div>
 </div>
 

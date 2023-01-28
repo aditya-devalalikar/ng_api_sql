@@ -76,7 +76,7 @@ export class UsersServiceService {
 }
 
 export interface User {
-  Id: Number,
+  Id: number,
   UserName: String,
   Email: String,
   Role: String,
