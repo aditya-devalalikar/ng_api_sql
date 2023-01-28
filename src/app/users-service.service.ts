@@ -64,8 +64,41 @@ export class UsersServiceService {
     return of('Hello, New User Added!');
   }
 
-  receiveData(data: User) {
-    this.students.push(data);
+  createUser(data: any) {
+    let user :User = {
+      ...this.students,
+      Id : this.students.length + 1,
+      Email : data.email,
+      Role : data.role,
+      UserName : data.userName,
+      Password : data.password,
+      CollegeName : data.collegeName,
+      UniversityName : data.universityName
+    }
+    this.students.push(user);
+    return new Observable<User[]>(observer => {
+      setTimeout(() => {
+        observer.next(this.students);
+      }, 1000);
+    });
+  }
+  
+  updateUser(data: any) {
+    return new Observable<User[]>(observer => {
+      setTimeout(() => {
+         this.students.map(item => {
+          if(item.Id == data.id){
+            item.Email = data.email;
+            item.Password = data.password;
+            item.Role = data.role;
+            item.UserName = data.userName;
+            item.UniversityName = data.universityName;
+            item.CollegeName = data.collegeName;
+          }
+        observer.next(this.students);
+      }, 1000);
+    });
+    });
   }
 
   private apiUrl = 'http://localhost:3000/api';
@@ -77,10 +110,10 @@ export class UsersServiceService {
 
 export interface User {
   Id: number,
-  UserName: String,
-  Email: String,
-  Role: String,
-  Password: String,
-  CollegeName?: String,
-  UniversityName?: String
+  UserName: string,
+  Email: string,
+  Role: string,
+  Password: string,
+  CollegeName?: string,
+  UniversityName?: string
 }

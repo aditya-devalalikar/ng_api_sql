@@ -30,6 +30,29 @@ export class CounterEffects {
     )
     );
 
+
+    //create user
+    createUser$ = createEffect(() => this.actions$.pipe(
+        ofType(CounterActions.createUser),
+        mergeMap((action) => this.userServiceService.createUser(action.user)
+            .pipe(
+                map((user: User[]) => (CounterActions.createUserSuccess({ user }))),
+                catchError(() => EMPTY)
+            ))
+    )
+    );
+    
+    //create user
+    updateUser$ = createEffect(() => this.actions$.pipe(
+        ofType(CounterActions.updateUser),
+        mergeMap((action) => this.userServiceService.updateUser(action.user)
+            .pipe(
+                map((user: User[]) => (CounterActions.updateUserSuccess({ user }))),
+                catchError(() => EMPTY)
+            ))
+    )
+    );
+
     constructor(private userServiceService: UsersServiceService,
         private actions$: Actions) { }
 }

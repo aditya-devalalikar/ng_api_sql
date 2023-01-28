@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 
 import * as CounterActions from '../store/counter.action';
 import * as CounterSelector from '../store/counter.selector';
+import { User } from '../users-service.service';
 
 @Injectable({
   providedIn: 'root',
@@ -25,6 +26,14 @@ export class CounterFacade {
   
   getUserById(id:number) {
     this.store.dispatch(CounterActions.getUserById({id}));
+  }
+
+  createUser(user:any) {
+    this.store.dispatch(CounterActions.createUser({user}));
+  }
+  
+  updateUser(user:any) {
+    this.store.dispatch(CounterActions.updateUser({user}));
   }
 
   increment() {

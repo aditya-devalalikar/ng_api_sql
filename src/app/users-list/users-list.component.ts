@@ -13,7 +13,7 @@ export class UsersListComponent {
   users: User[] = [];
   text: string = '';
   showUsers: boolean = false;
-
+  buttonTittle:string = "";
   userList$ : Observable<User[]>;
   showUserForm : boolean = false;
 
@@ -29,10 +29,12 @@ export class UsersListComponent {
 
   addNewUser() {
     this.showUserForm = true;
+    this.buttonTittle = "Create User"
   }
 
   updateUser(id:number){
     this.showUserForm = true;
+    this.buttonTittle = "Update User"
   }
   
 }

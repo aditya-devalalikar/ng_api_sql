@@ -39,6 +39,27 @@ const counterReducer = createReducer(
         return {...state, singleUser: initialState.singleUser}
     }),
 
+    
+    on(userAction.createUser, state => {
+        return {...state, userList: []}
+    }),
+    on(userAction.createUserSuccess, (state, action) => {
+        return {...state, userList: action.user}
+    }),
+    on(userAction.createUserFailed, state => {
+        return {...state, userList: []}
+    }),
+
+    
+    on(userAction.updateUser, state => {
+        return {...state, userList: []}
+    }),
+    on(userAction.updateUserSuccess, (state, action) => {
+        return {...state, userList: action.user}
+    }),
+    on(userAction.updateUserFailed, state => {
+        return {...state, userList: []}
+    }),
 );
 
 export function countReducer (state: CounterState | undefined, action: Action): CounterState {
