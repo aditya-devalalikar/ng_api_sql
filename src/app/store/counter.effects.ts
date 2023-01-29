@@ -4,17 +4,34 @@ import { EMPTY } from 'rxjs';
 import * as CounterActions from './counter.action';
 import { map, mergeMap, catchError } from 'rxjs/operators';
 import { User, UsersServiceService } from '../users-service.service';
+import { HttpRes } from './counter.state';
 
 
 @Injectable()
 export class CounterEffects {
 
     //Load all Users
+    // loadUserList$ = createEffect(() => this.actions$.pipe(
+    //     ofType(CounterActions.getAllData),
+    //     mergeMap(() => this.userServiceService.getAllUsers()
+    //         .pipe(
+    //             map((userList: User[]) => (CounterActions.getAllDataSuccess({ userList }))),
+    //             catchError(() => EMPTY)
+    //         ))
+    // ));
+
     loadUserList$ = createEffect(() => this.actions$.pipe(
         ofType(CounterActions.getAllData),
-        mergeMap(() => this.userServiceService.getAllUsers()
+        mergeMap(() => this.userServiceService.getAllUsersAPI()
             .pipe(
-                map((userList: User[]) => (CounterActions.getAllDataSuccess({ userList }))),
+                map((response: HttpRes) => {
+                    if (!response.isSuccess || response.data.length==0) {
+                        return CounterActions.getAllDataFailed({
+                            error: response.errorMessages
+                        })
+                    }
+                    return CounterActions.getAllDataSuccess({ userList: response.data })
+                }),
                 catchError(() => EMPTY)
             ))
     ));
@@ -54,9 +71,9 @@ export class CounterEffects {
 
 
     //delete user
-   deleteUser$ = createEffect(() => this.actions$.pipe(
+    deleteUser$ = createEffect(() => this.actions$.pipe(
         ofType(CounterActions.deleteUser),
-        mergeMap((action) => this.userServiceService.deleteUser(action.user)
+        mergeMap((action) => this.userServiceService.deleteUser(action.id)
             .pipe(
                 map((user: User[]) => (CounterActions.deleteUserSuccess({ user }))),
                 catchError(() => EMPTY)

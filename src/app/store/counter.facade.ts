@@ -40,7 +40,7 @@ export class CounterFacade {
     this.store.dispatch(CounterActions.updateUser({user}));
   }
 
-  deleteUser(user:any) {
-    this.store.dispatch(CounterActions.deleteUser({user}));
+  deleteUser(id: number) {
+    this.store.dispatch(CounterActions.deleteUser({id}));
   }
 }

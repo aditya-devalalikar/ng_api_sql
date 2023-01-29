@@ -8,7 +8,7 @@
 
 # Node
 /node_modules
-/src/app/nodeAPI/node_modules
+/nodeAPI/node_modules/
 npm-debug.log
 yarn-error.log
 

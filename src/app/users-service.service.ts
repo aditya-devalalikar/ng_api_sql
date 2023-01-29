@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
+import { HttpRes } from './store/counter.state';
 
 @Injectable({
   providedIn: 'root'
@@ -66,14 +67,14 @@ export class UsersServiceService {
   }
 
   createUser(data: any) {
-    var user :User = {
-      Id : this.students.length + 1,
-      UserName : data.userName,
-      Email : data.email,
-      Role : data.role,
-      Password : data.password,
-      CollegeName : data.collegeName,
-      UniversityName : data.universityName
+    var user: User = {
+      Id: this.students.length + 1,
+      UserName: data.userName,
+      Email: data.email,
+      Role: data.role,
+      Password: data.password,
+      CollegeName: data.collegeName,
+      UniversityName: data.universityName
     };
     var list = [...this.students, user];
     this.students = list;
@@ -83,24 +84,24 @@ export class UsersServiceService {
       }, 1000);
     });
   }
-  
+
   updateUser(data: any) {
     var list;
     list = this.students.filter(item => item.Id != data.id)
-    var user :User = {
-      Id : parseInt(data.id),
-      UserName : data.userName,
-      Email : data.email,
-      Role : data.role,
-      Password : data.password,
-      CollegeName : data.collegeName,
-      UniversityName : data.universityName
+    var user: User = {
+      Id: parseInt(data.id),
+      UserName: data.userName,
+      Email: data.email,
+      Role: data.role,
+      Password: data.password,
+      CollegeName: data.collegeName,
+      UniversityName: data.universityName
     };
     list = [...list, user];
     this.students = list;
     this.students.sort(
-      (p1, p2) => 
-      (p1.Id < p2.Id) ? 1 : (p1.Id > p2.Id) ? -1 : 0);
+      (p1, p2) =>
+        (p1.Id < p2.Id) ? 1 : (p1.Id > p2.Id) ? -1 : 0);
     return new Observable<User[]>(observer => {
       setTimeout(() => {
         observer.next(this.students);
@@ -108,14 +109,73 @@ export class UsersServiceService {
     });
   }
 
-  deleteUser(index: number): Observable<User[]>  {
-    return 
+  deleteUser(index: number): Observable<User[]> {
+    var list;
+    list = this.students.filter(item => item.Id != index)
+    this.students = list;
+    return new Observable<User[]>(observer => {
+      setTimeout(() => {
+        observer.next(this.students);
+      }, 1000);
+    });
   }
 
   private apiUrl = 'http://localhost:3000/api';
 
-  getAllDataAPI(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.apiUrl}/data`);
+  private headers = new HttpHeaders ()
+    .set('content-type', 'application/json')
+    .set('Access-Control-Allow-Origin', 'http://localhost:3000/api/users')
+    .set("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,PATCH,OPTIONS");
+
+  getAllUsersAPI(): Observable<HttpRes> {
+    const headers = this.headers;
+    return this.http.get<HttpRes>(`${this.apiUrl}/users`, { headers });
+  }
+
+  getUserByIdAPI(id: number): Observable<HttpRes> {
+    const headers = this.headers;
+    return this.http.get<HttpRes>(`${this.apiUrl}/user/` +id, { headers });
+  }
+
+  createUserAPI(data: any): Observable<HttpRes> {
+    const headers = this.headers;
+    const body: User = {
+      Id: data.id,
+      UserName: data.userName,
+      Email: data.email,
+      Role: data.role,
+      Password: data.password,
+      CollegeName: data.collegeName,
+      UniversityName: data.universityName
+    };
+    return this.http.post<HttpRes>(`${this.apiUrl}/user`, body, { headers });
+  }
+
+  //functionName(paraName: paraType ): returnType { 
+  // const returnData: returnType;
+  // return returnData 
+  //}
+
+  updateUserByIdAPI(data: any): Observable<HttpRes> {
+    const headers = this.headers;
+    const body: User = {
+      Id: data.id,
+      UserName: data.userName,
+      Email: data.email,
+      Role: data.role,
+      Password: data.password,
+      CollegeName: data.collegeName,
+      UniversityName: data.universityName
+    };
+    return this.http.put<HttpRes>(`${this.apiUrl}/user`, body, { headers });
+  }
+
+  deleteUserAPI(id: number): Observable<HttpRes> {
+    const headers = this.headers;
+    const body: any = {
+      Id: id
+    }
+    return this.http.delete<HttpRes>(`${this.apiUrl}/user`, { headers, body});
   }
 }
 

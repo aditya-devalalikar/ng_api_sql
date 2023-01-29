@@ -6,6 +6,14 @@ export interface CounterState {
   userList: User[];
 }
 
+export interface HttpRes {
+  isSuccess: boolean,
+  data: any,
+  errorMessages: string[]
+}
+
+
+
 export const initialState: CounterState = {
   count: 0,
   singleUser: {
