@@ -65,39 +65,45 @@ export class UsersServiceService {
   }
 
   createUser(data: any) {
-    let user :User = {
-      ...this.students,
+    var user :User = {
       Id : this.students.length + 1,
+      UserName : data.userName,
       Email : data.email,
       Role : data.role,
-      UserName : data.userName,
       Password : data.password,
       CollegeName : data.collegeName,
       UniversityName : data.universityName
-    }
-    this.students.push(user);
+    };
+    var list = [...this.students, user];
+    this.students = list;
     return new Observable<User[]>(observer => {
       setTimeout(() => {
-        observer.next(this.students);
+        observer.next(list);
       }, 1000);
     });
   }
   
   updateUser(data: any) {
+    var list;
+    list = this.students.filter(item => item.Id != data.id)
+    var user :User = {
+      Id : parseInt(data.id),
+      UserName : data.userName,
+      Email : data.email,
+      Role : data.role,
+      Password : data.password,
+      CollegeName : data.collegeName,
+      UniversityName : data.universityName
+    };
+    list = [...list, user];
+    this.students = list;
+    this.students.sort(
+      (p1, p2) => 
+      (p1.Id < p2.Id) ? 1 : (p1.Id > p2.Id) ? -1 : 0);
     return new Observable<User[]>(observer => {
       setTimeout(() => {
-         this.students.map(item => {
-          if(item.Id == data.id){
-            item.Email = data.email;
-            item.Password = data.password;
-            item.Role = data.role;
-            item.UserName = data.userName;
-            item.UniversityName = data.universityName;
-            item.CollegeName = data.collegeName;
-          }
         observer.next(this.students);
       }, 1000);
-    });
     });
   }
 

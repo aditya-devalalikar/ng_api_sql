@@ -15,11 +15,12 @@ export class UsersListComponent {
 
   users: User[] = [];
   text: string = '';
-  id: number = 0;
   showUsers: boolean = false;
   buttonTittle: string = "";
+  buttonTittle1: string = "";
   userList$: Observable<User[]>;
   showUserForm: boolean = false;
+  updateUserId: string = "";
 
   constructor(private countFacade: CounterFacade,
     private dialog: MatDialog) {
@@ -37,14 +38,15 @@ export class UsersListComponent {
 
   updateUser(id: number) {
     this.showUserForm = true;
-    this.buttonTittle = "Update User"
+    this.buttonTittle = "Update User";
+    this.buttonTittle1 = id.toString();
   }
 
   deleteUser(id: number) {
     this.countFacade.deleteUser(id);
   }
 
-  // openDialog(): void {
-  //   let dialogRef = this.dialog.open(UserDetailsComponent);
-  // }
+  updateUserFormVisibility(value:boolean){
+    this.showUserForm = value;
+  }
 }

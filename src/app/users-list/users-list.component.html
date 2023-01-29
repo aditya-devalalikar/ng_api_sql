@@ -33,8 +33,6 @@
     </div>
 
     <div *ngIf="showUserForm">
-        <users-create-update buttonTittle="{{buttonTittle}}"></users-create-update>
+        <users-create-update  buttonTittle1="{{buttonTittle1}}"  buttonTittle="{{buttonTittle}}" (hideUserForm)="updateUserFormVisibility($event)"></users-create-update>
     </div>
 </div>
-
-<!-- <app-add-user *ngIf=""></app-add-user> -->
