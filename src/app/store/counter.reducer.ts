@@ -69,9 +69,9 @@ const counterReducer = createReducer(
     on(userAction.deleteUser, state => {
         return {...state, userList: []}
     }),
-    // on(userAction.deleteUserSuccess, (state, action) => {
-    //     return {...state, userList: action.user}
-    // }),
+    on(userAction.deleteUserSuccess, (state, action) => {
+        return {...state, userList: action.user}
+    }),
     on(userAction.deleteUserFailed, state => {
         return {...state, userList: []}
     }),

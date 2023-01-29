@@ -35,6 +35,7 @@ export class UsersServiceService {
     UniversityName: 'GTU University'
   }];
 
+  index: number = 0;
   constructor(private http: HttpClient) { }
 
   getAllUsers(): Observable<User[]> {
@@ -107,11 +108,9 @@ export class UsersServiceService {
     });
   }
 
-  deleteUser(data: any) {
-    
+  deleteUser(index: number): Observable<User[]>  {
+    return 
   }
-
-
 
   private apiUrl = 'http://localhost:3000/api';
 

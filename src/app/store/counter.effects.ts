@@ -19,6 +19,7 @@ export class CounterEffects {
             ))
     ));
 
+
     //Load User by ID
     loadUserById$ = createEffect(() => this.actions$.pipe(
         ofType(CounterActions.getUserById),
@@ -27,8 +28,7 @@ export class CounterEffects {
                 map((user: User) => (CounterActions.getUserByIdSuccess({ user }))),
                 catchError(() => EMPTY)
             ))
-    )
-    );
+    ));
 
 
     //create user
@@ -39,9 +39,9 @@ export class CounterEffects {
                 map((user: User[]) => (CounterActions.createUserSuccess({ user }))),
                 catchError(() => EMPTY)
             ))
-    )
-    );
-    
+    ));
+
+
     //create user
     updateUser$ = createEffect(() => this.actions$.pipe(
         ofType(CounterActions.updateUser),
@@ -50,20 +50,18 @@ export class CounterEffects {
                 map((user: User[]) => (CounterActions.updateUserSuccess({ user }))),
                 catchError(() => EMPTY)
             ))
-    )
-    );
+    ));
 
 
     //delete user
-    // deleteUser$ = createEffect(() => this.actions$.pipe(
-    //     ofType(CounterActions.deleteUser),
-    //     mergeMap((action) => this.userServiceService.deleteUser(action.user)
-    //         .pipe(
-    //             map((user: User[]) => (CounterActions.deleteUserSuccess({ user }))),
-    //             catchError(() => EMPTY)
-    //         ))
-    // )
-    // );
+   deleteUser$ = createEffect(() => this.actions$.pipe(
+        ofType(CounterActions.deleteUser),
+        mergeMap((action) => this.userServiceService.deleteUser(action.user)
+            .pipe(
+                map((user: User[]) => (CounterActions.deleteUserSuccess({ user }))),
+                catchError(() => EMPTY)
+            ))
+    ));
 
     constructor(private userServiceService: UsersServiceService,
         private actions$: Actions) { }
