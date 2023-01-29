@@ -101,6 +101,12 @@ export class UsersServiceService {
     });
   }
 
+  deleteUser(data: any) {
+    
+  }
+
+
+
   private apiUrl = 'http://localhost:3000/api';
 
   getAllDataAPI(): Observable<User[]> {

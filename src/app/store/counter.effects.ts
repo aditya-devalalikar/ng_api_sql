@@ -53,6 +53,18 @@ export class CounterEffects {
     )
     );
 
+
+    //delete user
+    // deleteUser$ = createEffect(() => this.actions$.pipe(
+    //     ofType(CounterActions.deleteUser),
+    //     mergeMap((action) => this.userServiceService.deleteUser(action.user)
+    //         .pipe(
+    //             map((user: User[]) => (CounterActions.deleteUserSuccess({ user }))),
+    //             catchError(() => EMPTY)
+    //         ))
+    // )
+    // );
+
     constructor(private userServiceService: UsersServiceService,
         private actions$: Actions) { }
 }

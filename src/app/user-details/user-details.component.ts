@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CounterFacade } from '../store/counter.facade';
@@ -25,6 +26,7 @@ export class UserDetailsComponent {
 
   constructor(private route: ActivatedRoute, 
     private usersServiceService: UsersServiceService,
+    private dialog: MatDialog,
     private countFacade : CounterFacade) {
       this.singleUser$ = this.countFacade.singleUser$
     }

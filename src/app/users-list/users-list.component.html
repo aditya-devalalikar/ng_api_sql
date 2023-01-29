@@ -1,19 +1,23 @@
-
-
 <div class="container">
     <div class="row" style="margin: 30px" *ngIf="(userList$ | async) != null">
         <div class="col-md-3 col-xs-6" *ngFor="let user of userList$ | async; let i=index">
-            <div class="card">
+            <div class="card bg-light border-dark m-1">
+                <div class="card-header">
+                    Student Details
+                </div>
                 <div class="card-body">
-                    <h5 class="card-title">{{ i }}</h5>
-                    <h5 class="card-title">{{ user.UserName }}</h5>
-                    <h6 class="card-subtitle">{{ user.Email }}</h6>
-                    <h6 class="card-subtitle">{{ user.Password }}</h6>
-                    <h6 class="card-subtitle">{{ user.Role }}</h6>
+                    <p class="card-title">{{ i }}</p>
+                    <p class="card-title">{{ user.UserName }}</p>
+                    <p class="card-subtitle">{{ user.Email }}</p>
+                    <p class="card-subtitle">{{ user.Password }}</p>
+                    <p class="card-subtitle">{{ user.Role }}</p>
                     <p class="card-text">{{ user.CollegeName }}</p>
                     <p class="card-text">{{ user.UniversityName }}</p>
-                    <a class="btn btn-primary m-1"  href="/user/{{user.Id}}">Details</a>
-                    <a class="btn btn-primary " (click)="updateUser(user.Id)">update</a>
+                    <div class="m-3 text-center">
+                        <a class="btn btn-primary" href="/user/{{user.Id}}">Details</a>
+                        <a class="btn btn-primary m-2" (click)="updateUser(user.Id)">update</a>
+                        <a class="btn btn-primary" (click)="deleteUser(user.Id)">Delete</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -23,8 +27,8 @@
             <h5>No records found!</h5>
         </div>
     </ng-template>
-    <div class="my-3 mx-3">
-        <button type="button" class="btn btn-primary" (click)="addNewUser()">Add New User</button>
+    <div class="m-3 text-center">
+        <button type="button" class="btn btn-primary m-3" (click)="addNewUser()">Add New User</button>
         <ng-template #componentOutlet></ng-template>
     </div>
 

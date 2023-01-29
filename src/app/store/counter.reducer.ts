@@ -12,6 +12,8 @@ export interface PartialState {
 
 const counterReducer = createReducer(
     initialState,
+
+    //counter increment-decrement
     on(userAction.increment, state => {
         return {...state, count: state.count + 1}
     }),
@@ -19,6 +21,7 @@ const counterReducer = createReducer(
         return {...state, count: state.count - 1}
     }),
 
+    //reducer for get all user data
     on(userAction.getAllData, state => {
         return {...state, userList: []}
     }),
@@ -29,6 +32,7 @@ const counterReducer = createReducer(
         return {...state, userList: []}
     }),
     
+    //reducer for get user by id
     on(userAction.getUserById, state => {
         return {...state, singleUser: initialState.singleUser}
     }),
@@ -39,7 +43,7 @@ const counterReducer = createReducer(
         return {...state, singleUser: initialState.singleUser}
     }),
 
-    
+    //reducer for create user
     on(userAction.createUser, state => {
         return {...state, userList: []}
     }),
@@ -50,7 +54,7 @@ const counterReducer = createReducer(
         return {...state, userList: []}
     }),
 
-    
+    //reducer for update user
     on(userAction.updateUser, state => {
         return {...state, userList: []}
     }),
@@ -58,6 +62,17 @@ const counterReducer = createReducer(
         return {...state, userList: action.user}
     }),
     on(userAction.updateUserFailed, state => {
+        return {...state, userList: []}
+    }),
+
+    //reducer for delete user
+    on(userAction.deleteUser, state => {
+        return {...state, userList: []}
+    }),
+    // on(userAction.deleteUserSuccess, (state, action) => {
+    //     return {...state, userList: action.user}
+    // }),
+    on(userAction.deleteUserFailed, state => {
         return {...state, userList: []}
     }),
 );

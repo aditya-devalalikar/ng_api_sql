@@ -16,6 +16,10 @@ export class CounterFacade {
 
   constructor(private store: Store) {}
 
+  increment() {
+    this.store.dispatch(CounterActions.increment());
+  }
+  
   decrement() {
     this.store.dispatch(CounterActions.decrement());
   }
@@ -36,10 +40,7 @@ export class CounterFacade {
     this.store.dispatch(CounterActions.updateUser({user}));
   }
 
-  increment() {
-    this.store.dispatch(CounterActions.increment());
+  deleteUser(user:any) {
+    this.store.dispatch(CounterActions.deleteUser({user}));
   }
-
- 
-
 }
