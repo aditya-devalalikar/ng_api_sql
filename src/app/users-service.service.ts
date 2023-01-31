@@ -124,7 +124,7 @@ export class UsersServiceService {
 
   private headers = new HttpHeaders ()
     .set('content-type', 'application/json')
-    .set('Access-Control-Allow-Origin', 'http://localhost:3000/api/users')
+    .set('Access-Control-Allow-Origin', '*')
     .set("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,PATCH,OPTIONS");
 
   getAllUsersAPI(): Observable<HttpRes> {
@@ -134,7 +134,7 @@ export class UsersServiceService {
 
   getUserByIdAPI(id: number): Observable<HttpRes> {
     const headers = this.headers;
-    return this.http.get<HttpRes>(`${this.apiUrl}/user/` +id, { headers });
+    return this.http.get<HttpRes>(`${this.apiUrl}/user/`+id, { headers });
   }
 
   createUserAPI(data: any): Observable<HttpRes> {

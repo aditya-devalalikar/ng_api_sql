@@ -70,7 +70,7 @@ const counterReducer = createReducer(
         return {...state, userList: []}
     }),
     on(userAction.deleteUserSuccess, (state, action) => {
-        return {...state, userList: action.user}
+        return {...state}
     }),
     on(userAction.deleteUserFailed, state => {
         return {...state, userList: []}
@@ -79,4 +79,4 @@ const counterReducer = createReducer(
 
 export function countReducer (state: CounterState | undefined, action: Action): CounterState {
     return counterReducer(state, action);
-  }
+}

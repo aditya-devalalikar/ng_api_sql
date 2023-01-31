@@ -4,6 +4,7 @@ export interface CounterState {
   count: number;
   singleUser: User;
   userList: User[];
+  displayMessage: DisplayMessage;
 }
 
 export interface HttpRes {
@@ -12,6 +13,17 @@ export interface HttpRes {
   errorMessages: string[]
 }
 
+export enum MessageType {
+  DEFAULT, 
+  ERROR,
+  INFO,
+  SUCCESS
+}
+
+export interface DisplayMessage {
+  type: MessageType,
+  message: string
+}
 
 
 export const initialState: CounterState = {
@@ -25,5 +37,9 @@ export const initialState: CounterState = {
     CollegeName: "",
     UniversityName: ""
   },
-  userList: []
+  userList: [],
+  displayMessage: {
+    type: MessageType.DEFAULT,
+    message: ''
+  }
 };

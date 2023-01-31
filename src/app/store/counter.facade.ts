@@ -13,6 +13,7 @@ export class CounterFacade {
   counter$ = this.store.select(CounterSelector.counterSelector);
   userList$ = this.store.select(CounterSelector.userListSelector);
   singleUser$ = this.store.select(CounterSelector.singleUserDetailsSelector);
+  diplayMessage$ = this.store.select(CounterSelector.displayMessageSelector);
 
   constructor(private store: Store) {}
 

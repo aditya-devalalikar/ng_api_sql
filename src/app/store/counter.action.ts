@@ -1,6 +1,8 @@
 import { createAction, props } from '@ngrx/store';
 import { User } from '../users-service.service';
 
+//actions for me
+// export const increment = createAction('[Counter] Increment');
 
 //actions for increment-decrement
 export const increment = createAction('[Counter] Increment');
@@ -33,5 +35,6 @@ export const updateUserFailed = createAction('[User] updateUserFailed', props<{ 
 
 //actions to delete a user data 
 export const deleteUser = createAction('[User] deleteUser', props<{ id:any }>());
-export const deleteUserSuccess = createAction('[User] deleteUserSuccess', props<{ user: User[] }>());
+export const deleteUserSuccess = createAction('[User] deleteUserSuccess');
 export const deleteUserFailed = createAction('[User] deleteUserFailed', props<{ error:string[] }>());
+
