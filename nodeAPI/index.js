@@ -97,7 +97,7 @@ app.post('/api/user', async (req, res) => {
         let finalResult = [];
 
         if (result.rowsAffected.find(item => item == 1)) {
-            finalResult = await sql.query`SELECT * from UserDetails WHERE Id=${lastId}`
+            finalResult = await sql.query`SELECT * from UserDetails WHERE Id=${lastId}+1`
 
             if (finalResult.recordset.length > 0) {
                 response = {

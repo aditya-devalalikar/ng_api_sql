@@ -1,0 +1,42 @@
+<div class="container my-2" *ngIf="(userList$ | async) != null">
+    <table class="table m-1">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">UserName</th>
+                <th scope="col">Email</th>
+                <th scope="col">Password</th>
+                <th scope="col">Role</th>
+                <th scope="col">College</th>
+                <th scope="col">University</th>
+                <th scope="col">Details</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let user of userList$ | async">
+            <tr>
+                <th scope="row">{{user.Id}}</th>
+                <td>{{user.UserName}}</td>
+                <td>{{user.Email}}</td>
+                <td>{{user.Password}}</td>
+                <td>{{user.Role}}</td>
+                <td>{{user.CollegeName}}</td>
+                <td>{{user.UniversityName}}</td>
+                <!-- <td><a class="btn btn-light" href="/user/{{user.Id}}">Details</a></td> -->
+                <td><a class="btn btn-light" (click)="userDetails(user.Id)">Details</a></td>
+                <td><a class="btn btn-light" (click)="updateUser(user.Id)">Update</a></td>
+                <td> <a class="btn btn-light" (click)="deleteUser(user.Id)">Delete</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <ng-template #elseBlock>
+        <div>
+            <h5>No records found!</h5>
+        </div>
+    </ng-template>
+    <div class="m-3 text-center">
+        <button type="button" class="btn btn-primary m-3" (click)="openDialog()">Add New User</button>
+        <ng-template #componentOutlet></ng-template>
+    </div>
+</div>

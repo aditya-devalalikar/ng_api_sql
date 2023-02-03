@@ -1,0 +1,20 @@
+<div class="card bg-light border-dark" style="width: 18rem;" *ngIf="(singleUser$|async)?.Id != 0">
+    <div class="card-header">
+        <h2>Student Details</h2>
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">ID = {{(singleUser$|async)?.Id}}</h3>
+        <h3 class="card-title">Username = {{(singleUser$|async)?.UserName}}</h3>
+        <h3 class="card-subtitle">Email = {{(singleUser$|async)?.Email}}</h3>
+        <h3 class="card-text">Password = {{(singleUser$|async)?.Password}}</h3>
+        <h3 class="card-subtitle">Role = {{(singleUser$|async)?.Role}}</h3>
+        <h3 class="card-subtitle">College Name = {{(singleUser$|async)?.CollegeName}}</h3>
+        <h3 class="card-text">University Name = {{(singleUser$|async)?.UniversityName}}</h3>
+    </div>
+</div>
+
+<div *ngIf="user.Id==0">
+    <div>
+        <h5>No records found!</h5>
+    </div>
+</div>
